@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
+import { join } from 'path';
 
-dotenv.config();
+const envFile = process.env.ENV_FILE || '.env';
+dotenv.config({ path: join(__dirname, `../${envFile}`) });
 
 interface IEnvVariables {
   PORT: number;
