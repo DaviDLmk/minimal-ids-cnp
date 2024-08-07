@@ -1,0 +1,12 @@
+.env
+.env.*
+*.env.*
+!.env.sample
+
+node_modules
+
+build
+dist
+
+*/logs
+*/secrets
