@@ -3,10 +3,13 @@ import negotiationsRouter from './routes/negotiations.router';
 import { APIError } from './classes/APIError.class';
 import { env } from './config';
 import { RouteNotFoundError } from './classes/RouteNotFoundError';
+import mongoose from 'mongoose';
 
 const app = express();
 
 export const startServer = async (port?: number) => {
+  await mongoose.connect(env.DATABASE_URL);
+
   app.get('/health', (_, res) => {
     const uptime = process.uptime();
     res.status(200).json({ message: 'Server is running', uptime });
